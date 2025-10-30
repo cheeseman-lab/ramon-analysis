@@ -1,60 +1,96 @@
 # Screen Information
 experiment:
-  id: ""  # Experiment identifier
+  id: "ramon"  # Experiment identifier
   notebook_entries: ""  # Links or references to lab notebook entries
   dates: 
-    start: ""
-    end: ""
+    start: "250828"
+    end: "251010"
 
 # Cellular Conditions
 cellular:
-  cell_line: ""  # e.g., HeLa, HEK293, etc.
-  imaging_timepoint: ""  # When imaging occurred after treatment
+  cell_line: "HeLa"  # e.g., HeLa, HEK293, etc.
+  imaging_timepoint: "24 hours"  # When imaging occurred after treatment
   treatment:
-    summary: ""  # Brief description of treatment
-    details: ""  # Detailed protocol or conditions
-  plates: ""  # Number of plates
-  wells_per_plate: ""  # Number of wells per plate
+    summary: "Toxoplasma infection"  # Brief description of treatment
+    details: "HeLa cells were infected with a library of mutant Toxoplasma (knock outs). 24 hours after infection, the cells were stained and fixed with 4% FA and 0.02% GA."  # Detailed protocol or conditions
+  plates: "2"  # Number of plates
+  wells_per_plate: "1"  # Number of wells per plate
 
 # Sequencing by Synthesis (SBS)
 sbs:
-  cycles: ""  # Number of cycles
-  cycle_order: ""  # Order of cycles
-  background_channel: ""  # Suggested background channel
+  cycles: "14"  # Number of cycles
+  cycle_order: "CATG"  # Order of cycles
+  background_channel: "DAPI"  # Suggested background channel
   library_details:
-    number_of_genes: ""
-    guides_per_gene: ""
+    number_of_genes: "4702"
+    guides_per_gene: "3"
     other_information: ""
 
 # Phenotype (PH) Steps
 phenotype:
-  background_channel_cell: ""  # For cell segmentation
-  background_channel_body: ""  # For body (e.g. parasite) segmentation
+  background_channel_cell: "Vimentin"  # For cell segmentation
+  background_channel_body: "GRA7"  # For body (e.g. parasite) segmentation
   
-  # Rounds of staining/imaging (in order they were stained for each round)
+  # Rounds of staining/imaging (in order they were stained)
   # Add more rounds as needed
   rounds:
     - round_number: 1
       stains:
+        - name: "ConA"
+          marker_of: "Cell membrane"
+          channel: "AF750"
+        - name: "MitoTracker"
+          marker_of: "Mitochondrial Matrix"
+          channel: "Cy5"
+        - name: "LipidSpot"
+          marker_of: "Lipid droplets"
+          channel: "GFP"
         - name: "DAPI"  # Name of stain/antibody
           marker_of: "Nuclei"  # What it marks
           channel: "DAPI"  # Channel used (e.g., DAPI, CY3)
-        - name: "ConA"
-          marker_of: "Cytoplasm"
-          channel: "AF750"
+        - name: "Brightfield"  # Name of stain/antibody
+          marker_of: "Everything"  # What it marks
+          channel: "Brightfield"  
     
     - round_number: 2
       stains:
-        - name: ""  # Name of stain/antibody
-          marker_of: ""  # What it marks
-          channel: ""  # Channel used (e.g., DAPI, CY3)
-        - name: ""
-          marker_of: ""
-          channel: ""
+        - name: "EEA1"  # Name of stain/antibody
+          marker_of: "Endosomes"  # What it marks
+          channel: "AF750"  # Channel used (e.g., DAPI, CY3)
+        - name: "TUBA"
+          marker_of: "Tubulin"
+          channel: "Cy5"
+        - name: "GRA7"
+          marker_of: "Parasitophorous Vacuole membrane"
+          channel: "Cy3"
+        - name: "Vimentin"
+          marker_of: "Cytoplasm"
+          channel: "GFP"
+        - name: "DAPI"
+          marker_of: "Nuclei"
+          channel: "DAPI"
+  
+    - round_number: 3
+      stains:
+        - name: "Phalloidin"  # Name of stain/antibody
+          marker_of: "Actin"  # What it marks
+          channel: "AF750"  # Channel used (e.g., DAPI, CY3)
+        - name: "GM130"  # Name of stain/antibody
+          marker_of: "Golgi membrane"  # What it marks
+          channel: "Cy5"  # Channel used (e.g., DAPI, CY3)
+        - name: "AcTUB"
+          marker_of: "Acetylated Tubulin"
+          channel: "Cy3"
+        - name: "TOM20"
+          marker_of: "Outer Mitochondrial membrane"
+          channel: "GFP"
+        - name: "DAPI"
+          marker_of: "Nuclei"
+          channel: "DAPI"
 
 # Data Generated
 data:
-  storage_format: ""  # e.g., .nd2, .tiff
-  location: "/lab/.."  # Base path for data storage
+  storage_format: ".nd2"  # e.g., .nd2, .tiff
+  location: "/lab/ops_data/ramon"  # Base path for data storage in cheesegrater_ops
   
   notes: ""  # Any additional notes about the data or file naming conventions
